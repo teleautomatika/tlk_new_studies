@@ -1,0 +1,41 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" navigatingTo="onNavigatingTo" class="bg-gray-900">
+    <GridLayout rows="auto, *" class="p-4">
+        <!-- Header -->
+        <StackLayout row="0" class="mb-4">
+            <Label text="Welcome to Teleautomatika" class="text-2xl text-white font-bold" />
+            <Label text="{{ accountBalance }}" class="text-xl text-green-400" />
+        </StackLayout>
+
+        <!-- Main Content -->
+        <ScrollView row="1">
+            <StackLayout>
+                <!-- Quick Actions -->
+                <GridLayout columns="*, *, *" class="mb-6">
+                    <Button col="0" text="Transfer" tap="{{ onTransfer }}" class="bg-blue-600 text-white m-1" />
+                    <Button col="1" text="Invest" tap="{{ onInvest }}" class="bg-purple-600 text-white m-1" />
+                    <Button col="2" text="AI Chat" tap="{{ onAIChat }}" class="bg-green-600 text-white m-1" />
+                </GridLayout>
+
+                <!-- Performance Chart -->
+                <WebView src="{{ chartUrl }}" height="200" class="mb-4" />
+
+                <!-- Recent Transactions -->
+                <ListView items="{{ recentTransactions }}" class="mb-4">
+                    <ListView.itemTemplate>
+                        <GridLayout columns="*, auto" class="p-2 border-b border-gray-700">
+                            <Label col="0" text="{{ description }}" class="text-white" />
+                            <Label col="1" text="{{ amount }}" class="text-right" 
+                                   class="{{ amount >= 0 ? 'text-green-400' : 'text-red-400' }}" />
+                        </GridLayout>
+                    </ListView.itemTemplate>
+                </ListView>
+
+                <!-- AI Insights -->
+                <StackLayout class="p-4 bg-gray-800 rounded-lg">
+                    <Label text="AI Investment Insights" class="text-lg text-white font-bold mb-2" />
+                    <Label text="{{ aiRecommendation }}" class="text-gray-300" textWrap="true" />
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </GridLayout>
+</Page>

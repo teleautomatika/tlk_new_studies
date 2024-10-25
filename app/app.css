@@ -1,0 +1,94 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+Page {
+    background-color: black;
+}
+
+.bg-black {
+    background-color: black;
+}
+
+.space-background {
+    background: linear-gradient(180deg, #000000 0%, #0a0a2a 100%);
+}
+
+.star {
+    background-color: white;
+    width: 2;
+    height: 2;
+    border-radius: 1;
+    animation-name: starTwinkle;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes starTwinkle {
+    0% { opacity: 0.1; }
+    50% { opacity: 1; }
+    100% { opacity: 0.1; }
+}
+
+.logo-container {
+    animation-name: float;
+    animation-duration: 6s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-20); }
+    100% { transform: translateY(0); }
+}
+
+.title {
+    color: white;
+    font-size: 32;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 4;
+}
+
+.subtitle {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 16;
+    letter-spacing: 2;
+}
+
+.neuron-button {
+    animation-name: glow;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+    animation-timing-function: ease-in-out;
+}
+
+@keyframes glow {
+    0% { opacity: 0.8; }
+    50% { opacity: 1; }
+    100% { opacity: 0.8; }
+}
+
+.login-form {
+    background-color: rgba(0, 10, 30, 0.8);
+    border-radius: 15;
+    border-width: 1;
+    border-color: rgba(0, 255, 255, 0.1);
+}
+
+.input-field {
+    background-color: rgba(0, 20, 40, 0.5);
+    color: white;
+    border-width: 1;
+    border-color: rgba(0, 255, 255, 0.2);
+    border-radius: 8;
+    placeholder-color: rgba(255, 255, 255, 0.5);
+}
+
+.login-button {
+    background: linear-gradient(45deg, #00ccff, #0033ff);
+    border-radius: 8;
+    color: white;
+    font-weight: bold;
+}

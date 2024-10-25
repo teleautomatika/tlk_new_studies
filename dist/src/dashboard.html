@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - TELEAUTOMATIKA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500&display=swap" rel="stylesheet">
+  <script type="module" crossorigin src="/assets/dashboard-fQ4HPsfE.js"></script>
+  <link rel="modulepreload" crossorigin href="/assets/modulepreload-polyfill-B5Qt9EMX.js">
+  <link rel="stylesheet" crossorigin href="/assets/dashboard-BAO77sH-.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo mb-8">
+                <h1 class="text-2xl font-light tracking-wider">TELEAUTOMATIKA</h1>
+            </div>
+            
+            <nav class="sidebar-menu">
+                <a href="#" class="menu-item active">
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <span>Transactions</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <span>Investments</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <span>AI Assistant</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <span>Neural Notes</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <span>NFC Payments</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <span>Settings</span>
+                </a>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Balance Card -->
+            <div class="balance-card">
+                <h2 class="text-lg font-light">Total Balance</h2>
+                <div class="balance-amount">$50,000.00</div>
+                <div class="text-green-400">+15.3% this month</div>
+            </div>
+
+            <!-- Dashboard Grid -->
+            <div class="dashboard-grid">
+                <!-- AI Investment Analysis -->
+                <div class="dashboard-card">
+                    <h3 class="card-title">AI Investment Analysis</h3>
+                    <canvas id="investmentChart"></canvas>
+                    <div id="aiRecommendations" class="mt-4 text-gray-300">
+                    </div>
+                </div>
+
+                <!-- Neural Notes -->
+                <div class="dashboard-card">
+                    <h3 class="card-title">Neural Notes</h3>
+                    <div id="noteGraph" class="h-64 mb-4"></div>
+                    <div id="noteEditor" class="bg-opacity-50 bg-black p-4 rounded">
+                    </div>
+                </div>
+
+                <!-- Recent Transactions -->
+                <div class="dashboard-card">
+                    <h3 class="card-title">Recent Transactions</h3>
+                    <div id="transactionList"></div>
+                </div>
+
+                <!-- AI Chat -->
+                <div class="dashboard-card">
+                    <h3 class="card-title">Neural Assistant</h3>
+                    <div id="aiChat" class="h-96"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

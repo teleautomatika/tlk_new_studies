@@ -1,0 +1,251 @@
+/* Base styles */
+:root {
+  --neon-pink: #ff2b9d;
+  --neon-blue: #00f3ff;
+  --neon-purple: #b537f2;
+  --dark-bg: #0a0014;
+  --glass-bg: rgba(16, 0, 32, 0.7);
+  --glass-border: rgba(255, 43, 157, 0.3);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: var(--dark-bg);
+  font-family: 'Montserrat', sans-serif;
+  min-height: 100vh;
+  color: white;
+  overflow-x: hidden;
+}
+
+/* Cyberpunk background with animated gradient */
+.dashboard-container {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  min-height: 100vh;
+  background: 
+    linear-gradient(45deg, rgba(0,0,0,0.7) 0%, rgba(10,0,20,0.7) 100%),
+    radial-gradient(circle at 50% 50%, var(--neon-purple) 0%, transparent 50%);
+  position: relative;
+}
+
+/* Animated grid background */
+.dashboard-container::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(transparent 0%, var(--neon-purple) 2%, transparent 3%),
+    linear-gradient(90deg, transparent 0%, var(--neon-purple) 2%, transparent 3%);
+  background-size: 50px 50px;
+  animation: grid-animation 20s linear infinite;
+  opacity: 0.1;
+  z-index: 0;
+}
+
+@keyframes grid-animation {
+  0% { background-position: 0 0; }
+  100% { background-position: 50px 50px; }
+}
+
+/* Sidebar styling */
+.sidebar {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border-right: 1px solid var(--glass-border);
+  padding: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.logo {
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.neon-text {
+  color: var(--neon-blue);
+  text-shadow: 
+    0 0 5px var(--neon-blue),
+    0 0 10px var(--neon-blue),
+    0 0 20px var(--neon-blue);
+  font-weight: 200;
+  letter-spacing: 0.2em;
+}
+
+/* Menu items */
+.menu-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.menu-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.menu-item:hover::before {
+  left: 100%;
+}
+
+.menu-item:hover {
+  background: rgba(255, 43, 157, 0.1);
+  color: white;
+}
+
+.menu-item.active {
+  background: rgba(255, 43, 157, 0.2);
+  color: var(--neon-pink);
+  text-shadow: 0 0 10px var(--neon-pink);
+}
+
+/* Main content area */
+.main-content {
+  padding: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* Cards styling */
+.dashboard-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.dashboard-card:hover {
+  border-color: var(--neon-pink);
+  box-shadow: 0 0 20px rgba(255, 43, 157, 0.2);
+}
+
+/* Status badges */
+.status-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.875rem;
+  background: rgba(0, 243, 255, 0.1);
+  color: var(--neon-blue);
+  border: 1px solid var(--neon-blue);
+}
+
+.status-badge.online {
+  background: rgba(0, 255, 128, 0.1);
+  color: #00ff80;
+  border-color: #00ff80;
+}
+
+/* Progress bars */
+.progress-bar {
+  width: 100%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-value {
+  height: 100%;
+  background: linear-gradient(90deg, var(--neon-blue), var(--neon-pink));
+  transition: width 0.3s ease;
+}
+
+/* Chat interface */
+.message-bubble {
+  padding: 1rem;
+  margin: 0.5rem 0;
+  border-radius: 0.5rem;
+  max-width: 80%;
+}
+
+.message-bubble.user {
+  background: rgba(255, 43, 157, 0.1);
+  border: 1px solid var(--neon-pink);
+  margin-left: auto;
+}
+
+.message-bubble.assistant {
+  background: rgba(0, 243, 255, 0.1);
+  border: 1px solid var(--neon-blue);
+}
+
+/* Neural Notes */
+.note-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem 0;
+}
+
+.note-card {
+  background: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  border-radius: 1rem;
+  padding: 1.5rem;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.note-card:hover {
+  border-color: var(--neon-pink);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(255, 43, 157, 0.2);
+}
+
+.note-title {
+  color: var(--neon-blue);
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.note-tag {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  margin: 0.25rem;
+  border-radius: 1rem;
+  background: rgba(181, 55, 242, 0.1);
+  color: var(--neon-purple);
+  border: 1px solid var(--neon-purple);
+  font-size: 0.875rem;
+}
+
+/* Animations */
+@keyframes glow {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+
+.glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* Glass effect modal */
+.glass-effect {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+}

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neural Notes - TELEAUTOMATIKA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/styles.css">
+</head>
+<body>
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <h1 class="text-2xl font-light tracking-wider neon-text">TELEAUTOMATIKA</h1>
+            </div>
+            
+            <nav class="sidebar-menu">
+                <a href="/src/dashboard.html" class="menu-item">
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <span>Transactions</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <span>Investments</span>
+                </a>
+                <a href="/src/neural-assistant.html" class="menu-item">
+                    <span>Neural Assistant</span>
+                </a>
+                <a href="/src/neural-notes.html" class="menu-item active">
+                    <span>Neural Notes</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <span>NFC Payments</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <span>Settings</span>
+                </a>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="flex justify-between items-center mb-6">
+                <h1 class="text-2xl font-light">Neural Notes</h1>
+                <button id="new-note" class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-lg transition-all">
+                    New Note
+                </button>
+            </div>
+
+            <!-- Note Editor Modal -->
+            <div id="note-editor" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+                <div class="glass-effect w-full max-w-2xl rounded-xl p-6">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-xl font-light">Create Note</h2>
+                        <button id="close-editor" class="text-gray-400 hover:text-white">×</button>
+                    </div>
+                    <input type="text" id="note-title" placeholder="Note Title" 
+                           class="w-full bg-purple-900/10 border border-purple-800/20 rounded-lg p-3 mb-4 text-white">
+                    <textarea id="note-content" placeholder="Note Content" rows="6"
+                              class="w-full bg-purple-900/10 border border-purple-800/20 rounded-lg p-3 mb-4 text-white"></textarea>
+                    <input type="text" id="note-tags" placeholder="Tags (comma separated)" 
+                           class="w-full bg-purple-900/10 border border-purple-800/20 rounded-lg p-3 mb-4 text-white">
+                    <div class="flex justify-end">
+                        <button id="save-note" class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-lg transition-all">
+                            Save Note
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notes Grid -->
+            <div id="notes-grid" class="note-grid"></div>
+        </div>
+    </div>
+    <script type="module" src="/src/neural-notes.ts"></script>
+</body>
+</html>

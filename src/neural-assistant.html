@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neural Assistant - TELEAUTOMATIKA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/styles.css">
+</head>
+<body>
+    <!-- Stars Background -->
+    <div class="stars" id="stars"></div>
+
+    <div class="dashboard-container">
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="logo">
+                <h1 class="neon-text">TELEAUTOMATIKA</h1>
+            </div>
+            
+            <nav class="sidebar-menu">
+                <a href="/src/dashboard.html" class="menu-item">
+                    <span>Dashboard</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <span>Transactions</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <span>Investments</span>
+                </a>
+                <a href="/src/neural-assistant.html" class="menu-item active">
+                    <span>Neural Assistant</span>
+                </a>
+                <a href="/src/neural-notes.html" class="menu-item">
+                    <span>Neural Notes</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <span>NFC Payments</span>
+                </a>
+                <a href="#" class="menu-item">
+                    <span>Settings</span>
+                </a>
+            </nav>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                <!-- AI Chat Interface -->
+                <div class="dashboard-card lg:col-span-2">
+                    <div class="flex flex-col h-[calc(100vh-8rem)]">
+                        <div class="flex justify-between items-center mb-4">
+                            <h2 class="text-xl font-light">Neural Assistant</h2>
+                            <div class="flex items-center gap-2">
+                                <span class="status-badge online">Connected</span>
+                                <span class="text-sm text-gray-400">Model v2.1.0</span>
+                            </div>
+                        </div>
+                        <div id="chat-messages" class="flex-1 overflow-y-auto space-y-4 p-4 mb-4"></div>
+                        <div class="border-t border-purple-800/20 p-4">
+                            <div class="flex gap-4">
+                                <input type="text" id="message-input" 
+                                       class="flex-1 bg-purple-900/10 border border-purple-800/20 rounded-lg p-3 text-white"
+                                       placeholder="Ask me anything...">
+                                <button id="send-button" 
+                                        class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-2 rounded-lg transition-colors">
+                                    Send
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- System Status & Metrics -->
+                <div class="flex flex-col gap-4">
+                    <!-- System Status -->
+                    <div class="dashboard-card">
+                        <h3 class="text-lg font-light mb-4">Distributed AI Status</h3>
+                        <div class="space-y-4">
+                            <div class="status-item">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span>Active Nodes</span>
+                                    <span id="active-nodes" class="status-badge online">12/12</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div id="nodes-progress" class="progress-value" style="width: 100%"></div>
+                                </div>
+                            </div>
+                            <div class="status-item">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span>Model Training</span>
+                                    <span id="training-status" class="status-badge">96.8%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div id="training-progress" class="progress-value" style="width: 96.8%"></div>
+                                </div>
+                            </div>
+                            <div class="status-item">
+                                <div class="flex justify-between items-center mb-2">
+                                    <span>Network Health</span>
+                                    <span id="network-status" class="status-badge">Optimal</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div id="network-progress" class="progress-value" style="width: 98%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Training Metrics -->
+                    <div class="dashboard-card metrics-card">
+                        <div class="flex justify-between items-center mb-2">
+                            <h3 class="text-lg font-light">Training Metrics</h3>
+                            <select id="metric-selector" 
+                                    class="bg-purple-900/10 border border-purple-800/20 rounded px-2 py-1 text-sm">
+                                <option value="accuracy">Accuracy</option>
+                                <option value="loss">Loss</option>
+                                <option value="bandwidth">Bandwidth</option>
+                            </select>
+                        </div>
+                        <canvas id="training-metrics"></canvas>
+                    </div>
+
+                    <!-- Node Distribution -->
+                    <div class="dashboard-card">
+                        <h3 class="text-lg font-light mb-4">Node Distribution</h3>
+                        <div class="grid grid-cols-3 gap-2 text-center">
+                            <div class="p-2 bg-purple-900/10 rounded">
+                                <div class="text-2xl font-light text-purple-400">4</div>
+                                <div class="text-xs text-gray-400">Americas</div>
+                            </div>
+                            <div class="p-2 bg-purple-900/10 rounded">
+                                <div class="text-2xl font-light text-purple-400">5</div>
+                                <div class="text-xs text-gray-400">Europe</div>
+                            </div>
+                            <div class="p-2 bg-purple-900/10 rounded">
+                                <div class="text-2xl font-light text-purple-400">3</div>
+                                <div class="text-xs text-gray-400">Asia</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="module" src="/src/neural-assistant.ts"></script>
+    <script>
+        // Create stars
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            const numberOfStars = 100;
+
+            for (let i = 0; i < numberOfStars; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                
+                // Random position
+                star.style.left = `${Math.random() * 100}%`;
+                star.style.top = `${Math.random() * 100}%`;
+                
+                // Random size
+                const size = Math.random() * 2 + 1;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                
+                // Random animation
+                star.style.setProperty('--duration', `${Math.random() * 3 + 2}s`);
+                star.style.setProperty('--delay', `${Math.random() * 2}s`);
+                star.style.setProperty('--opacity', `${Math.random() * 0.7 + 0.3}`);
+                
+                starsContainer.appendChild(star);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', createStars);
+    </script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TELEAUTOMATIKA</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(135deg, #000000 0%, #0a0a2a 100%);
+            font-family: 'Montserrat', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            color: white;
+        }
+
+        .container {
+            text-align: center;
+            padding: 20px;
+            position: relative;
+            z-index: 1;
+            transform: translateY(-10vh);
+        }
+
+        .title {
+            font-size: 2.5rem;
+            font-weight: 200;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: #ffffff;
+            text-shadow: 
+                0 0 20px rgba(255, 255, 255, 0.8),
+                0 0 40px rgba(255, 255, 255, 0.4);
+            margin-bottom: 1rem;
+            opacity: 0.95;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            font-weight: 300;
+            letter-spacing: 0.2em;
+            color: rgba(255, 255, 255, 0.9);
+            text-shadow: 
+                0 0 15px rgba(138, 43, 226, 0.8),
+                0 0 30px rgba(138, 43, 226, 0.4);
+            margin-bottom: 3rem;
+            opacity: 0.9;
+            background: linear-gradient(120deg, #e1b1ff, #8a2be2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        #neuron-container {
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+            cursor: pointer;
+            position: relative;
+        }
+
+        canvas {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Teleautomatika</h1>
+        <h2 class="subtitle">Your Hyperself AI Banking</h2>
+        <div id="neuron-container"></div>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

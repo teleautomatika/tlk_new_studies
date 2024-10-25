@@ -1,0 +1,45 @@
+<Page xmlns="http://schemas.nativescript.org/tns.xsd" 
+      navigatingTo="navigatingTo" 
+      class="bg-black">
+    <GridLayout rows="*">
+        <!-- Stars Container -->
+        <StackLayout id="starsContainer" row="0" />
+        
+        <!-- Main Content -->
+        <FlexboxLayout row="0" 
+                      flexDirection="column" 
+                      alignItems="center" 
+                      justifyContent="center" 
+                      padding="20">
+            <!-- Logo Section -->
+            <StackLayout class="logo-container text-center m-b-30">
+                <Label text="Teleautomatika" 
+                       class="title text-4xl m-b-8" />
+                <Label text="Your Hyperself AI Banking" 
+                       class="subtitle text-lg" />
+            </StackLayout>
+            
+            <!-- Login Button -->
+            <Image src="~/assets/neuron.png" 
+                   tap="{{ onLoginTap }}" 
+                   class="neuron-button m-t-20 m-b-20" 
+                   width="120" 
+                   height="120" />
+            
+            <!-- Login Form -->
+            <StackLayout visibility="{{ showLogin ? 'visible' : 'collapsed' }}" 
+                        class="login-form p-16 w-full">
+                <TextField hint="Username" 
+                          class="input-field p-10 m-b-10" 
+                          text="{{ username }}" />
+                <TextField hint="Password" 
+                          secure="true" 
+                          class="input-field p-10 m-b-16" 
+                          text="{{ password }}" />
+                <Button text="Enter Neural Network" 
+                        tap="{{ onDashboardTap }}" 
+                        class="login-button text-white p-10" />
+            </StackLayout>
+        </FlexboxLayout>
+    </GridLayout>
+</Page>
